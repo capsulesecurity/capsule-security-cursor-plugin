@@ -1,6 +1,12 @@
 # Capsule Security
 
-Real-time observability and security monitoring for AI agents in Cursor. Capsule Security captures every agent interaction — prompts, responses, tool calls, MCP executions, and shell commands — and streams them to the [Capsule Security](https://capsulesecurity.dev) platform for analysis, audit, and threat detection.
+Real-time observability and security for AI agents in Cursor. Capsule Security captures every agent interaction — prompts, responses, tool calls, MCP executions, and shell commands — and streams them to the [Capsule Security](https://capsulesecurity.dev) platform for behavioral analysis, threat prevention, and audit.
+
+- **Behavioral analysis** — builds a baseline of normal agent activity and detects anomalous patterns across sessions, tools, and commands
+- **Prevention, not just detection** — intercepts risky actions before they execute, blocking prompt injection, unauthorized tool use, and policy violations in real time
+- **Low latency** — hooks stream events asynchronously with sub-millisecond overhead; agent workflows run at full speed with no perceptible delay
+- **High accuracy** — purpose-built detection models tuned for AI agent threat patterns, minimizing false positives so your team stays focused on real risks
+- **Enterprise ready** — SOC 2 compliant, supports SSO, role-based access, workspace-level policies, and centralized dashboard for security teams managing fleets of developer agents
 
 ## How it works
 
@@ -42,10 +48,12 @@ export CAPSULE_SECURITY_JWT="your-token-here"
 
 ## What you get
 
-- **Full session audit trail** — every prompt, response, and tool call is recorded
-- **MCP configuration monitoring** — detects changes to MCP server setups across workspaces
-- **Shell command visibility** — tracks every command the agent executes in your terminal
-- **Real-time threat detection** — Capsule Security analyzes events as they stream in, flagging prompt injection attempts, suspicious tool usage, and policy violations
+- **Full session audit trail** — every prompt, response, and tool call is recorded with tamper-proof logging
+- **Behavioral baselines** — learns normal agent patterns per workspace and alerts on deviations
+- **Active prevention** — blocks prompt injection, data exfiltration, and unauthorized tool access before damage is done
+- **MCP configuration monitoring** — detects changes to MCP server setups across workspaces and flags misconfigurations
+- **Shell command visibility** — tracks every command the agent executes and enforces command-level policies
+- **Centralized dashboard** — unified view across teams, workspaces, and agents for security and compliance teams
 
 ## Requirements
 
