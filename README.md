@@ -1,4 +1,4 @@
-# Capsule Security
+# Capsule Security Plugin for Cursor
 
 Real-time observability and security for AI agents in Cursor. Capsule Security captures every agent interaction — prompts, responses, tool calls, MCP executions, and shell commands — and streams them to the [Capsule Security](https://capsule.security) platform for behavioral analysis, threat prevention, and audit.
 
