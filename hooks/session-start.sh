@@ -5,7 +5,7 @@
 
 set -euo pipefail
 
-DOMAIN="${CAPSULE_SECURITY_DOMAIN:-agentsecurity.dev-eu-west1.capsulesecurity.dev}"
+DOMAIN="${CAPSULE_SECURITY_DOMAIN:-agentsecurity.us-east1.capsulesecurity.io}"
 TOKEN="${CAPSULE_SECURITY_JWT:?CAPSULE_SECURITY_JWT is not set. Configure it in your environment to authenticate with Capsule Security.}"
 
 export CAPSULE_ENDPOINT="https://${DOMAIN}/v2/cursor/hooks/events"

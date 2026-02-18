@@ -36,7 +36,7 @@ Two environment variables control the plugin:
 | Variable | Required | Description |
 |:---------|:---------|:------------|
 | `CAPSULE_SECURITY_JWT` | Yes | Bearer token for authenticating with the Capsule Security API |
-| `CAPSULE_SECURITY_DOMAIN` | No | API domain. Defaults to `agentsecurity.dev-eu-west1.capsulesecurity.dev` |
+| `CAPSULE_SECURITY_DOMAIN` | No | API domain. Defaults to `agentsecurity.us-east1.capsulesecurity.io` |
 
 Set them in your shell profile (`~/.zshrc`, `~/.bashrc`) or in your CI environment:
 
