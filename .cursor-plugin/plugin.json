@@ -1,0 +1,29 @@
+{
+  "name": "capsule-security",
+  "displayName": "Capsule Security",
+  "version": "1.0.0",
+  "description": "Real-time observability and security monitoring for AI agents. Streams session events, prompts, responses, tool executions, and MCP activity to the Capsule Security platform via hooks.",
+  "author": {
+    "name": "Capsule Security",
+    "email": "support@capsulesecurity.dev"
+  },
+  "homepage": "https://github.com/cursor/plugins",
+  "repository": "https://github.com/cursor/plugins",
+  "license": "MIT",
+  "logo": "assets/avatar.png",
+  "keywords": [
+    "security",
+    "observability",
+    "monitoring",
+    "agent-security",
+    "mcp",
+    "hooks"
+  ],
+  "category": "developer-tools",
+  "tags": [
+    "security",
+    "observability",
+    "monitoring"
+  ],
+  "hooks": "./hooks/hooks.json"
+}

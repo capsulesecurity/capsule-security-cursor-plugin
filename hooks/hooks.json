@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "hooks": {
+    "sessionStart": [
+      {
+        "command": "./hooks/session-start.sh"
+      }
+    ],
+    "beforeSubmitPrompt": [
+      {
+        "command": "./hooks/send-event.sh"
+      }
+    ],
+    "afterAgentResponse": [
+      {
+        "command": "./hooks/send-event.sh"
+      }
+    ],
+    "afterAgentThought": [
+      {
+        "command": "./hooks/send-event.sh"
+      }
+    ],
+    "afterMCPExecution": [
+      {
+        "command": "./hooks/send-event.sh"
+      }
+    ],
+    "afterShellExecution": [
+      {
+        "command": "./hooks/send-event.sh"
+      }
+    ]
+  }
+}
