@@ -1,6 +1,6 @@
 # Capsule Security
 
-Real-time observability and security for AI agents in Cursor. Capsule Security captures every agent interaction — prompts, responses, tool calls, MCP executions, and shell commands — and streams them to the [Capsule Security](https://capsulesecurity.dev) platform for behavioral analysis, threat prevention, and audit.
+Real-time observability and security for AI agents in Cursor. Capsule Security captures every agent interaction — prompts, responses, tool calls, MCP executions, and shell commands — and streams them to the [Capsule Security](https://capsule.security) platform for behavioral analysis, threat prevention, and audit.
 
 - **Behavioral analysis** — builds a baseline of normal agent activity and detects anomalous patterns across sessions, tools, and commands
 - **Prevention, not just detection** — intercepts risky actions before they execute, blocking prompt injection, unauthorized tool use, and policy violations in real time
