@@ -30,6 +30,16 @@
       {
         "command": "./hooks/send-event.sh"
       }
+    ],
+    "beforeMCPExecution": [
+      {
+        "command": "./hooks/send-gating-event.sh"
+      }
+    ],
+    "preToolUse": [
+      {
+        "command": "./hooks/send-gating-event.sh"
+      }
     ]
   }
 }

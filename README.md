@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://cdn.capsulesecurity.io/black_logo.png" alt="Capsule Security" width="400">
+</p>
+
 # Capsule Security Plugin for Cursor
 
 Real-time observability and security for AI agents in Cursor. Capsule Security captures every agent interaction — prompts, responses, tool calls, MCP executions, and shell commands — and streams them to the [Capsule Security](https://capsule.security) platform for behavioral analysis, threat prevention, and audit.
@@ -20,6 +24,8 @@ The plugin installs a set of hooks that fire at key points in the agent lifecycl
 | `afterAgentThought` | Internal agent reasoning steps |
 | `afterMCPExecution` | MCP tool invocations and their results |
 | `afterShellExecution` | Shell commands executed by the agent |
+| `beforeMCPExecution` | MCP tool calls before execution — can block unauthorized or risky tool use |
+| `preToolUse` | Any tool invocation before execution — can block based on policy |
 
 On session start, the plugin also scans `.cursor/projects/` for MCP configuration files and uploads them for security review.
 
