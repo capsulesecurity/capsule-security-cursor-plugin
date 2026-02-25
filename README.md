@@ -19,13 +19,13 @@ The plugin installs a set of hooks that fire at key points in the agent lifecycl
 | Hook | What it captures |
 |:-----|:-----------------|
 | `sessionStart` | New session metadata and MCP server configurations from the workspace |
-| `beforeSubmitPrompt` | Every prompt before it reaches the agent |
+| `beforeSubmitPrompt` | Every prompt before it reaches the agent — can block prompt injection |
 | `afterAgentResponse` | Agent responses as they are produced |
 | `afterAgentThought` | Internal agent reasoning steps |
 | `afterMCPExecution` | MCP tool invocations and their results |
 | `afterShellExecution` | Shell commands executed by the agent |
+| `beforeShellExecution` | Shell commands before execution — can block dangerous commands |
 | `beforeMCPExecution` | MCP tool calls before execution — can block unauthorized or risky tool use |
-| `preToolUse` | Any tool invocation before execution — can block based on policy |
 
 On session start, the plugin also scans `.cursor/projects/` for MCP configuration files and uploads them for security review.
 

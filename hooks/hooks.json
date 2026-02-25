@@ -8,7 +8,7 @@
     ],
     "beforeSubmitPrompt": [
       {
-        "command": "./hooks/send-event.sh"
+        "command": "./hooks/send-gating-event.sh"
       }
     ],
     "afterAgentResponse": [
@@ -31,15 +31,15 @@
         "command": "./hooks/send-event.sh"
       }
     ],
+    "beforeShellExecution": [
+      {
+        "command": "./hooks/send-gating-event.sh"
+      }
+    ],
     "beforeMCPExecution": [
       {
         "command": "./hooks/send-gating-event.sh"
       }
     ],
-    "preToolUse": [
-      {
-        "command": "./hooks/send-gating-event.sh"
-      }
-    ]
   }
 }
