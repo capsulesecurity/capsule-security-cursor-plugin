@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://cdn.capsulesecurity.io/black_logo.png" alt="Capsule Security" width="400">
+  <img src="https://cdn.capsulesecurity.io/logo.svg" alt="Capsule Security" width="400">
 </p>
 
 # Capsule Security Plugin for Cursor
