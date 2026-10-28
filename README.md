@@ -6,6 +6,8 @@
 
 Real-time observability and security for AI agents in Cursor. Capsule Security captures every agent interaction — prompts, responses, tool calls, MCP executions, and shell commands — and streams them to the [Capsule Security](https://capsule.security) platform for behavioral analysis, threat prevention, and audit.
 
+It also ships the **Capsule MCP server** and **Capsule skills**, so you can ask the agent about your AI inventory, vet MCP servers and skills for supply-chain risk, and generate branded risk reports without leaving the editor.
+
 - **Behavioral analysis** — builds a baseline of normal agent activity and detects anomalous patterns across sessions, tools, and commands
 - **Prevention, not just detection** — intercepts risky actions before they execute, blocking prompt injection, unauthorized tool use, and policy violations in real time
 - **Low latency** — hooks stream events asynchronously with sub-millisecond overhead; agent workflows run at full speed with no perceptible delay
@@ -29,6 +31,33 @@ The plugin installs a set of hooks that fire at key points in the agent lifecycl
 
 On session start, the plugin also scans `.cursor/projects/` for MCP configuration files and uploads them for security review.
 
+## Capsule MCP server
+
+The plugin registers the [Capsule MCP server](https://www.npmjs.com/package/@capsulesecurity/capsule-mcp-server) (`@capsulesecurity/capsule-mcp-server`, run locally over stdio via `npx`), so the agent can query your Capsule tenant directly instead of guessing. Access is **read-only** and scoped to the single tenant that owns the service account.
+
+| Tool | Purpose |
+|:-----|:--------|
+| `graphql_introspection` | Search and describe the Capsule schema, and diagnose a query before it runs |
+| `query_graphql` | Run a read-only GraphQL query against your tenant |
+| `generate_report` | Render content blocks (summary, threats, sections, charts) into a branded PDF |
+| `export_csv` | Export query results as a CSV |
+
+Try asking:
+
+- "Using Capsule, list our AI agents and how many policy violations each had in the last 7 days."
+- "Which of our MCP servers are rated high risk, and which agents depend on them?"
+- "Build a CISO report of this month's detections and findings."
+
+## Skills
+
+| Skill | What it does |
+|:------|:-------------|
+| `report-builder` | Builds a downloadable PDF risk digest from live Capsule data, with audience-specific layouts (risk analysis, posture findings, runtime detections, SOC analyst, AI engineer, CISO, executive briefing) |
+| `supply-chain-analysis` | Assesses whether an MCP server, skill, connector, or plugin is safe to trust, using Capsule's reputation assessments, and recommends block / review / allow |
+| `capsule-brand` | Capsule brand guidelines (palette, typography, tone) used when producing reports |
+
+The skills are generated from the Capsule monorepo. To refresh them, run `node scripts/sync-skills.mjs [path-to-capsule3]`.
+
 ## Installation
 
 ```
@@ -37,20 +66,31 @@ On session start, the plugin also scans `.cursor/projects/` for MCP configuratio
 
 ## Configuration
 
-Two environment variables control the plugin:
+The plugin is configured through environment variables:
 
-| Variable | Required | Description |
-|:---------|:---------|:------------|
-| `CAPSULE_SECURITY_JWT` | Yes | Bearer token for authenticating with the Capsule Security API |
-| `CAPSULE_SECURITY_DOMAIN` | No | API domain. Defaults to `agentsecurity.us-east1.capsulesecurity.io` |
+| Variable | Used by | Required | Description |
+|:---------|:--------|:---------|:------------|
+| `CAPSULE_SECURITY_JWT` | Hooks | Yes | Bearer token for authenticating with the Capsule Security API |
+| `CAPSULE_SECURITY_DOMAIN` | Hooks | No | API domain. Defaults to `agentsecurity.us-east1.capsulesecurity.io` |
+| `CAPSULE_CLIENT_ID` | MCP server | Yes | Client ID of a Capsule service account (**Settings → Service Accounts** in the portal) |
+| `CAPSULE_CLIENT_SECRET` | MCP server | Yes | Client secret of that service account (shown only once, at creation time) |
+| `CAPSULE_API_URL` | MCP server | No | Regional API. Defaults to US (`https://portal.us-east1.capsulesecurity.io/api`); EU tenants use `https://portal.eu-west4.capsulesecurity.io/api` |
 
-Set them in your shell profile (`~/.zshrc`, `~/.bashrc`) or in your CI environment:
+Set them in your shell profile (`~/.zshrc`, `~/.bashrc`) or in your CI environment, then restart Cursor:
 
 ```bash
 export CAPSULE_SECURITY_JWT="your-token-here"
 # Optional — override the default API domain
 # export CAPSULE_SECURITY_DOMAIN="custom.capsulesecurity.dev"
+
+# Capsule MCP server
+export CAPSULE_CLIENT_ID="your-client-id"
+export CAPSULE_CLIENT_SECRET="your-client-secret"
+# EU tenants only
+# export CAPSULE_API_URL="https://portal.eu-west4.capsulesecurity.io/api"
 ```
+
+Give each user their own service account: requests are rate limited to 60 per minute per service account.
 
 ## What you get
 
@@ -65,7 +105,8 @@ export CAPSULE_SECURITY_JWT="your-token-here"
 
 - Python 3 (used by the `sessionStart` hook to collect MCP configurations)
 - `curl` (used by all other hooks to forward events)
-- A valid Capsule Security account and JWT token
+- Node.js 20 or later (used to run the Capsule MCP server)
+- A valid Capsule Security account, JWT token, and service account
 
 ## License
 
