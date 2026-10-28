@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "capsule": {
+      "command": "npx",
+      "args": ["-y", "@capsulesecurity/capsule-mcp-server"],
+      "env": {
+        "CAPSULE_CLIENT_ID": "${env:CAPSULE_CLIENT_ID}",
+        "CAPSULE_CLIENT_SECRET": "${env:CAPSULE_CLIENT_SECRET}",
+        "CAPSULE_API_URL": "${env:CAPSULE_API_URL}"
+      }
+    }
+  }
+}

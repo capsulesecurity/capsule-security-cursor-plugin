@@ -1,29 +1,39 @@
 {
   "name": "capsule-security",
   "displayName": "Capsule Security",
-  "version": "1.0.0",
-  "description": "Real-time observability and security monitoring for AI agents. Streams session events, prompts, responses, tool executions, and MCP activity to the Capsule Security platform via hooks.",
+  "version": "1.1.0",
+  "description": "Runtime security for AI agents in Cursor. Hooks stream and gate prompts, responses, shell commands, and MCP calls through Capsule Security to block prompt injection and risky actions, while the Capsule MCP server and skills let you query your AI inventory, assess MCP/skill supply-chain risk, and generate branded risk reports.",
   "author": {
     "name": "Capsule Security",
-    "email": "support@capsulesecurity.dev"
+    "email": "support@capsule.security"
   },
   "homepage": "https://capsule.security",
   "repository": "https://github.com/cursor/plugins",
   "license": "MIT",
   "logo": "assets/avatar.png",
   "keywords": [
+    "capsule",
     "security",
-    "observability",
-    "monitoring",
+    "ai-security",
     "agent-security",
+    "observability",
+    "runtime-detection",
     "mcp",
-    "hooks"
+    "supply-chain",
+    "hooks",
+    "skills"
   ],
-  "category": "developer-tools",
+  "category": "security",
   "tags": [
     "security",
-    "observability",
-    "monitoring"
+    "ai-security",
+    "agent-security",
+    "runtime-detection",
+    "mcp",
+    "supply-chain",
+    "observability"
   ],
-  "hooks": "./hooks/hooks.json"
+  "hooks": "./hooks/hooks.json",
+  "skills": "./skills/",
+  "mcpServers": "./mcp.json"
 }
